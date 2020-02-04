@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-
-const App = () => <h1>Hello World!</h1>;
+import App from './components/App';
 
 ReactDOM.render(<App />, document.getElementById('app'));
