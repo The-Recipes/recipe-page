@@ -50,6 +50,11 @@ li p {
   align-items: center;
 }
 
+#categories {
+  width: 100%;
+  display: flex;
+}
+
 #recipe-instructions {
   overflow: auto;
 }
@@ -77,6 +82,15 @@ li p {
   width: 65%;
   float: left;
   padding: 0 5px;
+}
+
+.category {
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+  background-color: whitesmoke;
+  text-align: center;
 }
 
 .recipe-desc-photo {
