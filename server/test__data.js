@@ -40,4 +40,4 @@ const testData = {
   }
 };
 
-export default testData;
+module.exports = testData;
