@@ -22,6 +22,8 @@
   "homepage": "https://github.com/The-Recipes/recipe-page#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^14.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
