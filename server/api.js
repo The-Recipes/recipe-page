@@ -1,5 +1,5 @@
 const express = require('express');
-const graphqlHTTP = require('express-graphql');
+// const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 
 // fake db for testing
@@ -18,7 +18,7 @@ function Instructions(id) {}
 // (parent of GeneralInfo, Details, Instructions)
 function Recipe(id) {}
 
-const schema = buildSchema(``);
+//const schema = buildSchema(``);
 
 const root = {};
 

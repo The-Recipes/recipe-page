@@ -1,61 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import GeneralInfo from './GeneralInfo';
 import Description from './Description';
 import Instructions from './Instructions';
 
-class Recipe extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      generalInfo: {
-        title: '',
-        author: '',
-        rated: 0,
-        categories: [],
-        summary: ''
-      },
-      details: {
-        photo: '',
-        photoAlt: '',
-        description: ''
-      },
-      instructions: {
-        totalYield: '',
-        activeTime: '',
-        totalTime: '',
-        ingredients: [],
-        directions: []
-      }
-    };
+const Recipe = props => {
+  // local state: recipe ; maybe consider useReducer later...
+  const [recipe, setRecipe] = useState({
+    generalInfo: {
+      title: '',
+      author: '',
+      rated: 0,
+      categories: [],
+      summary: ''
+    },
+    details: {
+      photo: '',
+      photoAlt: '',
+      description: ''
+    },
+    instructions: {
+      totalYield: '',
+      activeTime: '',
+      totalTime: '',
+      ingredients: [],
+      directions: []
+    }
+  });
 
-    this.fetchRecipe = this.fetchRecipe.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchRecipe(2);
-  }
-
-  fetchRecipe(recipeId) {
-    fetch(`http://localhost:3000/api/recipes/${recipeId}`)
+  // side effect: fetch recipe information
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/recipes/${props.recipeId}`)
       .then(response => response.json())
       .then(({ generalInfo, details, instructions }) => {
-        this.setState({ generalInfo, details, instructions });
+        setRecipe({ generalInfo, details, instructions });
       });
-  }
+  }, [props.recipeId]);
 
-  render() {
-    const { generalInfo, details, instructions } = this.state;
-
-    return (
-      <React.Fragment>
-        <GeneralInfo {...generalInfo} />
-        <Description {...details} />
-        <hr />
-        <Instructions {...instructions} />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <GeneralInfo {...recipe.generalInfo} />
+      <Description {...recipe.details} />
+      <hr />
+      <Instructions {...recipe.instructions} />
+    </React.Fragment>
+  );
+};
 
 export default Recipe;
