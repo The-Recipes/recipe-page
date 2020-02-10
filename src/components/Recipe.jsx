@@ -4,6 +4,9 @@ import GeneralInfo from './GeneralInfo';
 import Description from './Description';
 import Instructions from './Instructions';
 
+// graphql endpoint query (getRecipe)
+import getRecipe from '../queries/getRecipe';
+
 const Recipe = props => {
   // local state: recipe ; maybe consider useReducer later...
   const [recipe, setRecipe] = useState({
@@ -30,9 +33,21 @@ const Recipe = props => {
 
   // side effect: fetch recipe information
   useEffect(() => {
-    fetch(`http://localhost:3000/api/recipes/${props.recipeId}`)
+    // will change from localhost later
+    fetch(`http://localhost:3000/api/graphql`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        query: getRecipe,
+        variables: { recipeId: props.recipeId }
+      })
+    })
       .then(response => response.json())
-      .then(({ generalInfo, details, instructions }) => {
+      .then(({ data }) => {
+        const { generalInfo, details, instructions } = data.getRecipe;
         setRecipe({ generalInfo, details, instructions });
       });
   }, [props.recipeId]);

@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-const API = require('./api');
+const API = require('./api/api');
 
 const PORT = 3000;
 
