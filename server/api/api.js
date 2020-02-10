@@ -69,9 +69,4 @@ router.get('/', (req, res) => {
   res.send('ping!');
 });
 
-//get recipe data
-router.get('/recipes/:recipeId', (req, res) => {
-  res.send(testData);
-});
-
 module.exports = router;
