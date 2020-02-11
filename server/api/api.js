@@ -2,12 +2,15 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { buildSchema } = require('graphql');
 
+// database model for recipe -- used for connecting to db
+const Recipe = require('../database/models/recipe');
+
 // fake db for testing
 const testData = require('../test__data');
 
 // Implements the Recipe GraphQL type
 // (parent type of GeneralInfo, Details, Instructions)
-function Recipe(id, { generalInfo, details, instructions }) {
+function findRecipe(id, { generalInfo, details, instructions }) {
   this.id = id;
   this.generalInfo = generalInfo;
   this.details = details;
@@ -52,7 +55,7 @@ const schema = buildSchema(`
 
 // main GraphQL resolver
 const root = {
-  getRecipe: ({ id }) => new Recipe(id, testData),
+  getRecipe: ({ id }) => new findRecipe(id, testData),
 };
 
 const router = express.Router();
