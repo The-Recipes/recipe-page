@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../index.scss';
 
 import GeneralInfo from './GeneralInfo';
 import Description from './Description';
@@ -38,11 +39,11 @@ const Recipe = props => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       },
       body: JSON.stringify({
         query: getRecipe,
-        variables: { recipeId: props.recipeId }
+        variables: { title: props.title, author: props.author }
       })
     })
       .then(response => response.json())

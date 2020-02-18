@@ -1,5 +1,5 @@
-const getRecipe = `query($recipeId: ID!) {
-  getRecipe(id: $recipeId) {
+const getRecipe = `query($title: String $author: String) {
+  getRecipe(title: $title author: $author) {
     generalInfo {
       title
       author

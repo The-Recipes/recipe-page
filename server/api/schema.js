@@ -25,14 +25,13 @@ const schema = buildSchema(`
   }
 
   type Recipe {
-    id: ID!
     generalInfo: GeneralInfo
     details: Details
     instructions: Instructions
   }
 
   type Query {
-    getRecipe(id: ID!): Recipe
+    getRecipe(title: String author: String): Recipe
   }
 `);
 
