@@ -6,7 +6,7 @@ const Directions = ({ directions }) => (
     <ol>
       {directions.map((direction, index) => (
         <li key={index + '.' + direction.slice(0, 10)}>
-          <p className="directions__counter">{index + 1 + '.'}</p>
+          <p>{index + 1 + '.'}</p>
           <p>{direction}</p>
         </li>
       ))}

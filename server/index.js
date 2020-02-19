@@ -13,12 +13,12 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/api', API);
 
 // establish connection to db then listen in on PORT
-dbConnect().then(() => {
-  app.listen(process.env.PORT, () => {
-    console.log(`App listening on port ${process.env.PORT}`)
-  });
-})
+dbConnect()
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log(`Recipe App listening on port ${process.env.PORT}`);
+    });
+  })
   .catch(() => {
     console.error('Unable to connect to DB.');
   });
-
