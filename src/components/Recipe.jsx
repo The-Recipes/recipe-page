@@ -9,7 +9,6 @@ import Instructions from './Instructions';
 import getRecipe from '../queries/getRecipe';
 
 const Recipe = props => {
-  // local state: recipe ; maybe consider useReducer later...
   const [recipe, setRecipe] = useState({
     generalInfo: {
       title: '',
@@ -34,7 +33,7 @@ const Recipe = props => {
 
   // side effect: fetch recipe information
   useEffect(() => {
-    // will change from localhost later
+    // will change from localhost later...
     fetch(`http://localhost:3000/api/graphql`, {
       method: 'POST',
       headers: {
@@ -47,11 +46,10 @@ const Recipe = props => {
       })
     })
       .then(response => response.json())
-      .then(({ data }) => {
-        const { generalInfo, details, instructions } = data.getRecipe;
-        setRecipe({ generalInfo, details, instructions });
-      });
-  }, [props.recipeId]);
+      .then(({ data }) =>
+        setRecipe(prevRecipe => ({ ...prevRecipe, ...data.getRecipe }))
+      );
+  });
 
   return (
     <React.Fragment>

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
 
+%clear-margin-and-padding {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   width: 100%;
@@ -9,31 +14,28 @@ body {
 }
 
 h1 {
-  margin: 0;
-  padding: 0;
   font-size: 3rem;
+  @extend %clear-margin-and-padding;
 }
 
 h3 {
-  margin: 0;
-  padding: 0;
+  color: rgb(48, 162, 204);
+  @extend %clear-margin-and-padding;
 }
 
 ul,
 ol {
-  margin: 0;
-  padding: 0;
   list-style-type: none;
+  @extend %clear-margin-and-padding;
 }
 
 li {
   display: flex;
   margin: 1rem 0;
-}
-
-li p {
-  margin: 0;
-  min-width: 3rem;
+  p {
+    margin: 0;
+    min-width: 3rem;
+  }
 }
 
 #app {
@@ -80,13 +82,12 @@ li p {
   width: 100%;
   display: flex;
   justify-content: space-around;
-}
-
-#recipe-about li {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  li {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 #recipe-ingredients {
