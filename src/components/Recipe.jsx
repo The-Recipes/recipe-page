@@ -49,7 +49,7 @@ const Recipe = props => {
       .then(({ data }) =>
         setRecipe(prevRecipe => ({ ...prevRecipe, ...data.getRecipe }))
       );
-  });
+  }, []);
 
   return (
     <React.Fragment>

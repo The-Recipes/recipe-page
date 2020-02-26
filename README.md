@@ -1,7 +1,9 @@
 # recipe-page
-description of recipe with instructions
+
+Recipe information page (ingredients, instructions, and general info)
 
 ## directions:
+
 1. npm install
 2. create .env file (follow .env.example for env vars)
 3. npm run build
